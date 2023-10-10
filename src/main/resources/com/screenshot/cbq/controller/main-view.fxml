@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.BorderPane?>
+
+
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.screenshot.cbq.controller.MainController">
+   <center>
+      <Pane prefHeight="500.0" prefWidth="300.0" BorderPane.alignment="CENTER">
+         <children>
+            <CheckBox layoutX="53.0" layoutY="109.0" mnemonicParsing="false" text="快捷截图" />
+            <CheckBox layoutX="53.0" layoutY="152.0" mnemonicParsing="false" text="快捷录屏" />
+         </children>
+      </Pane>
+   </center>
+</BorderPane>

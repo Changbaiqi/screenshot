@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="57.0" prefWidth="559.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.screenshot.controller.ImageFactoryViewMenu">
+   <children>
+      <ListView layoutX="-1.0" orientation="HORIZONTAL" prefHeight="54.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="149.0" AnchorPane.topAnchor="0.0" />
+      <Button layoutY="11.0" mnemonicParsing="false" text="Button" />
+   </children>
+</AnchorPane>
