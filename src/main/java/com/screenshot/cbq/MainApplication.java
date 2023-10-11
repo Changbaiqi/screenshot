@@ -24,6 +24,8 @@ public class MainApplication extends Application {
     public static final int SECOND_SHORTCUT = 2; //关闭监听
     public static HotkeyListener hotkeyListener = null;
 
+
+
     @Override
     public void start(Stage stage) throws Exception {
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("controller/main-view.fxml"));
@@ -32,40 +34,34 @@ public class MainApplication extends Application {
         stage.setTitle("ScreenShot");
         stage.setScene(scene);
         stage.show();
-        //重置日志打印，避免GlobalScreen一直输出日志
-//        LogManager.getLogManager().reset();
-        JIntellitype.getInstance().registerHotKey(FIRST_SHORTCUT, 0, 116);
-        JIntellitype.getInstance().registerHotKey(FIRST_SHORTCUT, 0, 116);
-        hotkeyListener = code -> {
-            switch (code) {
-                case 1 -> {
-                    System.out.println("测试成功");
-                    GraphicsDevice defaultScreenDevice = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
-//                    int width = defaultScreenDevice.getDisplayMode().getWidth();
-//                    int height = defaultScreenDevice.getDisplayMode().getHeight();
+        stage.setOnCloseRequest(e->{ System.exit(0);});
+        while(true){
+            JIntellitype.getInstance().registerHotKey(FIRST_SHORTCUT, 0, 116);
+            hotkeyListener = code -> {
+                System.out.println("测试：" + code);
+                switch (code) {
+                    case 1 -> {
+                        System.out.println("测试成功");
 
-                    Platform.runLater(() -> {
-                        ImageModel png = ScreenShotUtils.fullCameraScreen("E:", "CBQ" + (long) (Math.random() * 99999999999L), "png");
-                        ImageFactoryView.init(png);
-
-                    });
+                        Platform.runLater(() -> {
+                            ImageModel png = ScreenShotUtils.fullCameraScreen("E:", "CBQ" + (long) (Math.random() * 99999999999L), "png");
+                            ImageFactoryView.init(png);
+                        });
+                    }
+                    default -> System.out.println("未知按键：" + code);
                 }
-                default -> System.out.println("未知按键：" + code);
-            }
-        };
-        JIntellitype.getInstance().addHotKeyListener(hotkeyListener);
-
-//        try{
-//            GlobalScreen.registerNativeHook();
-//        }catch (NativeHookException ex){
-//            System.out.println("There was a problem registering the native hook.");
-//            System.out.println(ex.getMessage());
+            };
+            JIntellitype.getInstance().addHotKeyListener(hotkeyListener);
+        }
+//
+//        while(true){
+//
+//
 //        }
-//        GlobalScreen.addNativeKeyListener(new GlobalKeyListenerExample());
-
     }
 
     public static void main(String[] args) {
         launch(args);
+
     }
 }
